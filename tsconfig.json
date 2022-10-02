@@ -33,7 +33,6 @@
     "exclude": [
         "dist",
         "node_modules",
-        "resources",
     ],
     "include": [
         "app/**/*",

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`import command should not run update command with invalid flags 1`] = `
+"Unexpected argument: --invalid
+See more help with --help"
+`;
+
+exports[`import command should not run update command without args 1`] = `
+"Missing 1 required arg:
+project  Path to the typescript project
+See more help with --help"
+`;
+
+exports[`import command should not run update command without required args 1`] = `
+"Missing required flag:
+ -o, --output OUTPUT  [2mPath to generate the model output file[22m
+See more help with --help"
+`;

@@ -1,3 +1,4 @@
+import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { Command, command } from '@blok-codes/inversify-oclif-utils';
 import { Flags, Interfaces } from '@oclif/core';
 import fs from 'fs-extra';
@@ -6,10 +7,16 @@ import { Logger } from 'winston';
 
 import { FamixImporter } from '../Services/FamixImporter';
 
+const availableFormats = ['json'];
+type Format = typeof availableFormats[number];
+
 @command('import')
 export default class Import extends Command {
     @inject('FamixImporter')
     private readonly importer!: FamixImporter;
+
+    @inject('FamixRepository')
+    private readonly repository!: FamixRepository;
 
     @inject('Logger')
     private readonly logger!: Logger;
@@ -21,7 +28,7 @@ export default class Import extends Command {
             char: 'f',
             default: 'json',
             description: 'Format of the output',
-            options: ['json'],
+            options: availableFormats,
             required: false,
         }),
         output: Flags.string({
@@ -44,12 +51,12 @@ export default class Import extends Command {
 
         if (args.project && flags.format === 'json') {
             this.importer.import(args.project);
-
-            const model = this.importer.getJsonModel();
-            const file = `${flags.output as string}/model.json`;
-
-            await fs.outputFile(file, model, { encoding: 'utf8' });
-            this.logger.info(`Generated the model output in json from to ${flags.output as string}`);
+            await this.output(flags.output as string, this.repository.toJSON(), flags.format as Format);
         }
+    };
+
+    private readonly output = async (path: string, model: string, format: Format): Promise<void> => {
+        await fs.outputFile(`${path}/model.${format}`, model, { encoding: 'utf8' });
+        this.logger.info(`Generated the model output in ${format} format to ${path}`);
     };
 }

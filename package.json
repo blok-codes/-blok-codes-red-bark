@@ -78,6 +78,7 @@
         ]
     },
     "bundledDependencies": [
+        "@blok-codes/famix",
         "@blok-codes/inversify-oclif-utils",
         "@oclif/core",
         "@oclif/plugin-autocomplete",
@@ -93,7 +94,7 @@
         "winston-daily-rotate-file"
     ],
     "dependencies": {
-        "@blok-codes/famix": "^1.2.0",
+        "@blok-codes/famix": "^1.3.3",
         "@blok-codes/inversify-oclif-utils": "^2.1.0",
         "@oclif/core": "^1.9.2",
         "@oclif/plugin-autocomplete": "^1.3.0",

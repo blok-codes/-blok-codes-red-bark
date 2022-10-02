@@ -1,7 +1,10 @@
+import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { Container } from 'inversify';
 import 'reflect-metadata';
 import { Project } from 'ts-morph';
+
 import { ServiceProvider } from '../../../app/Providers/ServiceProvider';
+import { FamixImporter } from '../../../app/Services/FamixImporter';
 import { buildLogger } from '../../../app/Utils/Logger';
 import { settings } from '../../../app/Utils/Settings';
 
@@ -19,9 +22,13 @@ describe('ServiceProvider', () => {
 
     it('should register all services', () => {
         expect(container.isBound('Project')).toBeTruthy();
+        expect(container.isBound('FamixImporter')).toBeTruthy();
+        expect(container.isBound('FamixRepository')).toBeTruthy();
     });
 
     it('should register all services with correct types', () => {
         expect(container.get('Project')).toBeInstanceOf(Project);
+        expect(container.get('FamixImporter')).toBeInstanceOf(FamixImporter);
+        expect(container.get('FamixRepository')).toBeInstanceOf(FamixRepository);
     });
 });

@@ -1,9 +1,11 @@
+import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { ContainerModule, decorate, injectable, interfaces } from 'inversify';
 import { Project } from 'ts-morph';
 
 import { FamixImporter } from '../Services/FamixImporter';
 import { Provider } from './Provider';
 
+decorate(injectable(), FamixRepository);
 decorate(injectable(), Project);
 
 export class ServiceProvider extends Provider {
@@ -11,6 +13,7 @@ export class ServiceProvider extends Provider {
         new ContainerModule((bind) => {
             this.registerProject(bind);
             this.registerFamixImporter(bind);
+            this.registerFamixRepository(bind);
         });
 
     private static readonly registerProject = (bind: interfaces.Bind) =>
@@ -18,4 +21,7 @@ export class ServiceProvider extends Provider {
 
     private static readonly registerFamixImporter = (bind: interfaces.Bind) =>
         bind<FamixImporter>('FamixImporter').to(FamixImporter).inSingletonScope();
+
+    private static readonly registerFamixRepository = (bind: interfaces.Bind) =>
+        bind<FamixRepository>('FamixRepository').to(FamixRepository).inSingletonScope();
 }
