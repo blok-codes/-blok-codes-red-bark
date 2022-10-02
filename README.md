@@ -1,5 +1,4 @@
 [![CI](https://github.com/blok-codes/-blok-codes-red-bark/actions/workflows/main.yml/badge.svg)](https://github.com/blok-codes/-blok-codes-red-bark/actions/workflows/main.yml)
-[![Version](https://img.shields.io/npm/v/@blok-codes/red-bark.svg)](https://www.npmjs.com/package/@blok-codes/red-bark)
 [![Node](https://img.shields.io/node/v/@blok-codes/red-bark.svg)](https://nodejs.org/download/release/latest-v16.x/)
 ![GitHub](https://img.shields.io/github/license/blok-codes/-blok-codes-red-bark)
 
