@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+process.env.NODE_CONFIG_DIR = __dirname + '/../dist/config';
+process.env.NODE_ENV = 'production';
+
+const run = require('../dist/app/index.js').run;
+run().then(require('@oclif/core/flush')).catch(require('@oclif/core/handle'));
+

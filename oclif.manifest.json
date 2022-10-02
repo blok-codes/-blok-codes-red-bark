@@ -1,0 +1,44 @@
+{
+    "version": "0.0.1",
+    "commands": {
+        "import": {
+            "id": "import",
+            "description": "Import typescript project to generate a model",
+            "strict": true,
+            "pluginName": "@blok-codes/red-bark",
+            "pluginAlias": "@blok-codes/red-bark",
+            "pluginType": "core",
+            "aliases": [],
+            "examples": [
+                "$ oex import path/to/typescript/project -o path/to/output/ -f json\nGenerated the model output in json from to path/to/output/model.json\n"
+            ],
+            "flags": {
+                "format": {
+                    "name": "format",
+                    "type": "option",
+                    "char": "f",
+                    "default": "json",
+                    "options": ["json"],
+                    "description": "Format of the output",
+                    "required": false,
+                    "multiple": false
+                },
+                "output": {
+                    "name": "output",
+                    "type": "option",
+                    "char": "o",
+                    "description": "Path to generate the model output file",
+                    "required": true,
+                    "multiple": false
+                }
+            },
+            "args": [
+                {
+                    "name": "project",
+                    "description": "Path to the typescript project",
+                    "required": true
+                }
+            ]
+        }
+    }
+}

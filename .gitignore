@@ -1,0 +1,19 @@
+# ide
+.editorconfig
+.idea/
+.vscode/
+.history/
+
+# mac references
+.DS_Store
+
+# test coverage reports
+tests/coverage/*
+.nyc_output/
+
+# application
+logs/
+dist/
+
+# node
+node_modules/

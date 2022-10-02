@@ -1,0 +1,141 @@
+{
+    "name": "@blok-codes/red-bark",
+    "version": "0.0.1",
+    "description": "famix typescript importer",
+    "author": "Jude Seide <jude.seide@gmail.com> (https://www.linkedin.com/in/judeseide/)",
+    "homepage": "https://github.com/blok-codes/-blok-codes-red-bark#readme",
+    "license": "GPL-3.0-or-later",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:blok-codes/-blok-codes-red-bark.git"
+    },
+    "bugs": {
+        "url": "https://github.com/blok-codes/-blok-codes-red-bark/issues"
+    },
+    "main": "./dist/app/index.js",
+    "types": "./dist/app/index.d.ts",
+    "bin": {
+        "red-bark": "./bin/run"
+    },
+    "scripts": {
+        "start": "yarn build && yarn global",
+        "build": "tsc -b",
+        "cover": "yarn cover:unit && yarn cover:report",
+        "cover:report": "nyc --reporter lcov --reporter clover --reporter text --report-dir tests/coverage/all report",
+        "cover:unit": "nyc --no-clean --reporter text yarn tests",
+        "format": "prettier --config .prettierrc --write \"app/{,**/}*.ts\" \"tests/{,**/}*.ts\"",
+        "lint": "eslint -c .eslintrc.js \"./{app,tests}/**/*.ts\"",
+        "lint:fix": "eslint -c .eslintrc.js --fix \"./{app,tests}/**/*.ts\"",
+        "posttest": "yarn lint",
+        "tests": "jest --colors --silent",
+        "prepare": "husky install"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "yarn cover:unit"
+        }
+    },
+    "lint-staged": {
+        "*.ts": [
+            "yarn format",
+            "yarn lint:fix"
+        ]
+    },
+    "nyc": {
+        "all": true,
+        "exclude": [
+            "types/index.d.ts",
+            "app/index.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "include": [
+            "app/*.ts",
+            "app/**/*.ts"
+        ],
+        "report-dir": "./tests/coverage/all",
+        "reporter": [
+            "json",
+            "text",
+            "lcov"
+        ],
+        "require": [
+            "ts-node/register"
+        ]
+    },
+    "oclif": {
+        "bin": "red-bark",
+        "dirname": "red-bark",
+        "commands": "./dist/app/Console",
+        "plugins": [
+            "@blok-codes/inversify-oclif-utils",
+            "@oclif/plugin-autocomplete",
+            "@oclif/plugin-help",
+            "@oclif/plugin-not-found"
+        ]
+    },
+    "bundledDependencies": [
+        "@blok-codes/inversify-oclif-utils",
+        "@oclif/core",
+        "@oclif/plugin-autocomplete",
+        "@oclif/plugin-help",
+        "@oclif/plugin-not-found",
+        "config",
+        "dotenv",
+        "fs-extra",
+        "lodash",
+        "ts-morph",
+        "tslib",
+        "winston",
+        "winston-daily-rotate-file"
+    ],
+    "dependencies": {
+        "@blok-codes/famix": "^1.2.0",
+        "@blok-codes/inversify-oclif-utils": "^2.1.0",
+        "@oclif/core": "^1.9.2",
+        "@oclif/plugin-autocomplete": "^1.3.0",
+        "@oclif/plugin-help": "^5.1.12",
+        "@oclif/plugin-not-found": "^2.3.1",
+        "config": "^3.3.7",
+        "dotenv": "^16.0.1",
+        "fs-extra": "^10.1.0",
+        "inversify": "^6.0.1",
+        "lodash": "^4.17.21",
+        "reflect-metadata": "^0.1.13",
+        "ts-morph": "^15.1.0",
+        "tslib": "^2.4.0",
+        "type-fest": "^2.13.1",
+        "typescript": "^4.7.3",
+        "winston": "^3.7.2",
+        "winston-daily-rotate-file": "^4.7.1"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.13",
+        "@types/jest": "^28.1.1",
+        "@types/lodash": "^4.14.182",
+        "@types/node": "^17.0.43",
+        "@typescript-eslint/eslint-plugin": "^5.28.0",
+        "@typescript-eslint/parser": "^5.28.0",
+        "eslint": "^8.17.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-mocha": "^10.0.5",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-simple-import-sort": "^7.0.0",
+        "globby": "^13.1.2",
+        "husky": "^8.0.1",
+        "jest": "^28.1.1",
+        "lint-staged": "^13.0.1",
+        "nyc": "^15.1.0",
+        "oclif": "^3.0.1",
+        "prettier": "^2.7.0",
+        "ts-jest": "^28.0.5",
+        "ts-node": "^10.8.1"
+    },
+    "engines": {
+        "node": ">=16"
+    }
+}
