@@ -5,8 +5,8 @@
             "id": "import",
             "description": "Import typescript project to generate a model",
             "strict": true,
-            "pluginName": "@blok-codes/red-bark",
-            "pluginAlias": "@blok-codes/red-bark",
+            "pluginName": "@blok-codes/red-twig",
+            "pluginAlias": "@blok-codes/red-twig",
             "pluginType": "core",
             "aliases": [],
             "examples": [
