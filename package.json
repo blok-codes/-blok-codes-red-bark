@@ -1,22 +1,22 @@
 {
-    "name": "@blok-codes/red-bark",
+    "name": "@blok-codes/red-twig",
     "version": "0.0.1",
     "description": "famix typescript importer",
     "author": "Jude Seide <jude.seide@gmail.com> (https://www.linkedin.com/in/judeseide/)",
-    "homepage": "https://github.com/blok-codes/-blok-codes-red-bark#readme",
+    "homepage": "https://github.com/blok-codes/-blok-codes-red-twig#readme",
     "license": "GPL-3.0-or-later",
     "private": false,
     "repository": {
         "type": "git",
-        "url": "git@github.com:blok-codes/-blok-codes-red-bark.git"
+        "url": "git@github.com:blok-codes/-blok-codes-red-twig.git"
     },
     "bugs": {
-        "url": "https://github.com/blok-codes/-blok-codes-red-bark/issues"
+        "url": "https://github.com/blok-codes/-blok-codes-red-twig/issues"
     },
     "main": "./dist/app/index.js",
     "types": "./dist/app/index.d.ts",
     "bin": {
-        "red-bark": "./bin/run"
+        "red-twig": "./bin/run"
     },
     "scripts": {
         "start": "yarn build && yarn global",
@@ -67,8 +67,8 @@
         ]
     },
     "oclif": {
-        "bin": "red-bark",
-        "dirname": "red-bark",
+        "bin": "red-twig",
+        "dirname": "red-twig",
         "commands": "./dist/app/Console",
         "plugins": [
             "@blok-codes/inversify-oclif-utils",
