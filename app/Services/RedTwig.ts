@@ -41,12 +41,12 @@ export class RedTwig {
 
     public readonly import = (paths: string[]): void => {
         this.logger.info(`Importing project at `, paths);
-        this.repository.toJSON(); // todo: remove this line - just to compile
 
         const files = this.project.addSourceFilesAtPaths(paths);
         files.forEach((sourceFile: SourceFile) => this.process(sourceFile));
 
         this.report(); // todo: delete this line - just to debug for now
+        this.logger.error(`json ${this.repository.toJSON()}`); // todo: remove this line - just to debug for now
     };
 
     // todo: delete this method - just to debug for now
@@ -111,6 +111,7 @@ export class RedTwig {
         method.isClassSide = declaration.isStatic();
         method.kind = declaration.getKindName();
 
+        method.name = declaration.getName();
         clazz.addMethods(method);
     };
 
