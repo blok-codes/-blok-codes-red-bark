@@ -1,8 +1,11 @@
 import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
+import { Class } from '@blok-codes/famix/dist/FamixTypeScript/Class';
+import { Method } from '@blok-codes/famix/dist/FamixTypeScript/Method';
 import { inject, injectable } from 'inversify';
 import {
     ClassDeclaration,
     FunctionDeclaration,
+    MethodDeclaration,
     ModuleDeclaration,
     Project,
     SourceFile,
@@ -28,9 +31,10 @@ export class RedTwig {
 
     // todo: delete these fields - placeholders until famix elements are created and stored in the repository
     private readonly classes: ClassDeclaration[] = [];
-
     private readonly declarations: VariableDeclaration[] = [];
+
     private readonly functions: FunctionDeclaration[] = [];
+    private readonly methods: MethodDeclaration[] = [];
 
     private readonly variables: VariableDeclaration[] = [];
     private readonly variableStatements: VariableStatement[] = [];
@@ -59,6 +63,9 @@ export class RedTwig {
         this.logger.info(`\nFunctions:`);
         this.functions.forEach((f) => this.logger.debug(f.getName()));
 
+        this.logger.info(`\nMethods:`);
+        this.methods.forEach((f) => this.logger.debug(f.getName()));
+
         this.logger.info(`\nVariable Declarations:`);
         this.declarations.forEach((v) => this.logger.debug(v.getName()));
     };
@@ -82,13 +89,26 @@ export class RedTwig {
 
     private readonly processClassDeclaration = (declaration: ClassDeclaration): void => {
         this.classes.push(declaration);
-        this.repository.addElement(this.repository.createOrGetFamixClass(declaration.getName()));
+        const clazz = this.repository.createOrGetFamixClass(declaration.getName());
+
+        this.repository.addElement(clazz);
+        declaration.getMethods().forEach((method) => this.processMethodDeclaration(method, clazz));
 
         this.logger.debug(
             `class: ${declaration.getName()} (${declaration.getType().getText()}), fqn = ${declaration
                 .getSymbol()
                 ?.getFullyQualifiedName()}`
         );
+    };
+
+    private readonly processMethodDeclaration = (declaration: MethodDeclaration, clazz: Class): void => {
+        this.methods.push(declaration);
+        this.logger.debug(`method: ${declaration.getName()}`);
+
+        const method = new Method(this.repository);
+        method.isAbstract = declaration.isAbstract();
+
+        clazz.addMethods(method);
     };
 
     private readonly processFunctionDeclaration = (declaration: FunctionDeclaration): void => {
