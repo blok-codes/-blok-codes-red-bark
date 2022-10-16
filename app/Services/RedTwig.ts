@@ -1,4 +1,3 @@
-import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { Class } from '@blok-codes/famix/dist/FamixTypeScript/Class';
 import { Method } from '@blok-codes/famix/dist/FamixTypeScript/Method';
 import { inject, injectable } from 'inversify';
@@ -17,6 +16,7 @@ import {
 import { Logger } from 'winston';
 
 import { isProcessableStatement } from '../Helpers';
+import { FamixRepository } from './FamixRepository';
 
 @injectable()
 export class RedTwig {
@@ -89,7 +89,7 @@ export class RedTwig {
 
     private readonly processClassDeclaration = (declaration: ClassDeclaration): void => {
         this.classes.push(declaration);
-        const clazz = this.repository.createOrGetFamixClass(declaration.getName());
+        const clazz = this.repository.createOrGetFamixClass(declaration.getName(), declaration.isAbstract());
 
         this.repository.addElement(clazz);
         declaration.getMethods().forEach((method) => this.processMethodDeclaration(method, clazz));
@@ -107,6 +107,9 @@ export class RedTwig {
 
         const method = new Method(this.repository);
         method.isAbstract = declaration.isAbstract();
+
+        method.isClassSide = declaration.isStatic();
+        method.kind = declaration.getKindName();
 
         clazz.addMethods(method);
     };

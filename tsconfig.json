@@ -33,7 +33,7 @@
     "exclude": [
         "dist",
         "node_modules",
-        "tests/fixtures",
+        "tests/fixtures/**/*",
     ],
     "include": [
         "app/**/*",

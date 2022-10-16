@@ -1,10 +1,10 @@
-import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import fs from 'fs-extra';
 import { Container, injectable } from 'inversify';
 import 'reflect-metadata';
 import { Logger } from 'winston';
 
 import Import from '../../../app/Console/import';
+import { FamixRepository } from '../../../app/Services/FamixRepository';
 import { RedTwig } from '../../../app/Services/RedTwig';
 
 @injectable()

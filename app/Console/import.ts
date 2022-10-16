@@ -1,10 +1,10 @@
-import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { Command, command } from '@blok-codes/inversify-oclif-utils';
 import { Flags, Interfaces } from '@oclif/core';
 import fs from 'fs-extra';
 import { inject } from 'inversify';
 import { Logger } from 'winston';
 
+import { FamixRepository } from '../Services/FamixRepository';
 import { RedTwig } from '../Services/RedTwig';
 
 const availableFormats = ['json'];

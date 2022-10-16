@@ -1,11 +1,10 @@
-import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { ContainerModule, decorate, injectable, interfaces } from 'inversify';
 import { Project } from 'ts-morph';
 
+import { FamixRepository } from '../Services/FamixRepository';
 import { RedTwig } from '../Services/RedTwig';
 import { Provider } from './Provider';
 
-decorate(injectable(), FamixRepository);
 decorate(injectable(), Project);
 
 export class ServiceProvider extends Provider {

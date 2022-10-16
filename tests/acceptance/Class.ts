@@ -1,7 +1,7 @@
-import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import path from 'path';
 
 import { kernel } from '../../app/Kernel';
+import { FamixRepository } from '../../app/Services/FamixRepository';
 import { RedTwig } from '../../app/Services/RedTwig';
 
 describe('class', () => {

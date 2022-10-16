@@ -94,7 +94,7 @@
         "winston-daily-rotate-file"
     ],
     "dependencies": {
-        "@blok-codes/famix": "^1.4.1",
+        "@blok-codes/famix": "^1.6.4",
         "@blok-codes/inversify-oclif-utils": "^2.1.0",
         "@oclif/core": "^1.9.2",
         "@oclif/plugin-autocomplete": "^1.3.0",

@@ -1,9 +1,9 @@
-import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { Container } from 'inversify';
 import 'reflect-metadata';
 import { Project } from 'ts-morph';
 
 import { ServiceProvider } from '../../../app/Providers/ServiceProvider';
+import { FamixRepository } from '../../../app/Services/FamixRepository';
 import { RedTwig } from '../../../app/Services/RedTwig';
 import { buildLogger } from '../../../app/Utils/Logger';
 import { settings } from '../../../app/Utils/Settings';
