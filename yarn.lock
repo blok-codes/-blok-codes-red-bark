@@ -284,10 +284,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@blok-codes/famix@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@blok-codes/famix/-/famix-1.3.3.tgz#2c583d640bd63b4bc0c78ca5c4f2a72d6974daa0"
-  integrity sha512-IohY01H7/xLUUVV3l2a7vjTv6NtPtcdLeFcD1r7TkFC3YI9gKpomgEl7NJI68TWyZ4EoYQ+OAD0e/pttvJjr1w==
+"@blok-codes/famix@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@blok-codes/famix/-/famix-1.4.1.tgz#331ed9caed4cd4880992f113b15c3ab8f54b53d7"
+  integrity sha512-S8aNBen3DW/uy4JWcu0YqzDCbM49/VtaOplxwLEejyOooQm1nq9FTJvfzXGn2v8zFhyV+DD7f1T3YR+tM0M0nA==
 
 "@blok-codes/inversify-oclif-utils@^2.1.0":
   version "2.1.0"

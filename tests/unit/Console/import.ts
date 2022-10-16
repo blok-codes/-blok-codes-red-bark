@@ -5,7 +5,7 @@ import 'reflect-metadata';
 import { Logger } from 'winston';
 
 import Import from '../../../app/Console/import';
-import { FamixImporter } from '../../../app/Services/FamixImporter';
+import { RedTwig } from '../../../app/Services/RedTwig';
 
 @injectable()
 class TestImportCommand extends Import {
@@ -36,7 +36,7 @@ describe('import command', () => {
     beforeAll(() => {
         container = new Container();
 
-        container.bind<FamixImporter>('FamixImporter').toConstantValue(importer as any);
+        container.bind<RedTwig>('RedTwig').toConstantValue(importer as any);
         container.bind<FamixRepository>('FamixRepository').toConstantValue(repository as any);
 
         container.bind<Logger>('Logger').toConstantValue(logger as any);

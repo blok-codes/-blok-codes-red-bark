@@ -16,7 +16,7 @@ import { Logger } from 'winston';
 import { isProcessableStatement } from '../Helpers';
 
 @injectable()
-export class FamixImporter {
+export class RedTwig {
     @inject('Logger')
     private readonly logger!: Logger;
 
@@ -82,6 +82,8 @@ export class FamixImporter {
 
     private readonly processClassDeclaration = (declaration: ClassDeclaration): void => {
         this.classes.push(declaration);
+        this.repository.addElement(this.repository.createOrGetFamixClass(declaration.getName()));
+
         this.logger.debug(
             `class: ${declaration.getName()} (${declaration.getType().getText()}), fqn = ${declaration
                 .getSymbol()

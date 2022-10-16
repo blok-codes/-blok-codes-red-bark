@@ -2,7 +2,7 @@ import { FamixRepository } from '@blok-codes/famix/dist/FamixRepository';
 import { ContainerModule, decorate, injectable, interfaces } from 'inversify';
 import { Project } from 'ts-morph';
 
-import { FamixImporter } from '../Services/FamixImporter';
+import { RedTwig } from '../Services/RedTwig';
 import { Provider } from './Provider';
 
 decorate(injectable(), FamixRepository);
@@ -20,7 +20,7 @@ export class ServiceProvider extends Provider {
         bind<Project>('Project').toConstantValue(new Project());
 
     private static readonly registerFamixImporter = (bind: interfaces.Bind) =>
-        bind<FamixImporter>('FamixImporter').to(FamixImporter).inSingletonScope();
+        bind<RedTwig>('RedTwig').to(RedTwig).inSingletonScope();
 
     private static readonly registerFamixRepository = (bind: interfaces.Bind) =>
         bind<FamixRepository>('FamixRepository').to(FamixRepository).inSingletonScope();

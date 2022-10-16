@@ -5,15 +5,15 @@ import fs from 'fs-extra';
 import { inject } from 'inversify';
 import { Logger } from 'winston';
 
-import { FamixImporter } from '../Services/FamixImporter';
+import { RedTwig } from '../Services/RedTwig';
 
 const availableFormats = ['json'];
 type Format = typeof availableFormats[number];
 
 @command('import')
 export default class Import extends Command {
-    @inject('FamixImporter')
-    private readonly importer!: FamixImporter;
+    @inject('RedTwig')
+    private readonly importer!: RedTwig;
 
     @inject('FamixRepository')
     private readonly repository!: FamixRepository;

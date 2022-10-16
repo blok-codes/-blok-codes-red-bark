@@ -14,7 +14,15 @@ export default {
     testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-    testPathIgnorePatterns: ['/app/', '/bin/', '/config/', '/dist/', '/node_modules/', '/tests/coverage/'],
+    testPathIgnorePatterns: [
+        '/app/',
+        '/bin/',
+        '/config/',
+        '/dist/',
+        '/node_modules/',
+        '/tests/coverage/',
+        '/tests/fixtures/',
+    ],
 
     // A map from regular expressions to paths to transformer
     // transform: undefined,
