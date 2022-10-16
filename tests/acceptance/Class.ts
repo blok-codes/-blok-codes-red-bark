@@ -5,13 +5,13 @@ import { kernel } from '../../app/Kernel';
 import { RedTwig } from '../../app/Services/RedTwig';
 
 describe('class', () => {
-    const fixture = path.resolve(__dirname, '../fixtures/');
+    const fixture = path.resolve(__dirname, '../fixtures/Entity.ts');
 
     const importer = kernel.get<RedTwig>('RedTwig');
     const repository = kernel.get<FamixRepository>('FamixRepository');
 
     beforeAll(() => {
-        importer.import(fixture);
+        importer.import([fixture]);
     });
 
     it('should have a class', () => {

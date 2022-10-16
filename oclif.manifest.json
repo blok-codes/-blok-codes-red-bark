@@ -10,7 +10,7 @@
             "pluginType": "core",
             "aliases": [],
             "examples": [
-                "$ oex import path/to/typescript/project -o path/to/output/ -f json\nGenerated the model output in json from to path/to/output/model.json\n"
+                "$ oex import -p path/to/typescript/project -o path/to/output/ -f json\nGenerated the model output in json from to path/to/output/model.json\n"
             ],
             "flags": {
                 "format": {
@@ -30,13 +30,21 @@
                     "description": "Path to generate the model output file",
                     "required": true,
                     "multiple": false
+                },
+                "projects": {
+                    "name": "projects",
+                    "type": "option",
+                    "char": "p",
+                    "description": "Path to the typescript projects",
+                    "required": true,
+                    "multiple": true
                 }
             },
             "args": [
                 {
-                    "name": "project",
-                    "description": "Path to the typescript project",
-                    "required": true
+                    "name": "action",
+                    "description": "Import typescript project to generate a model",
+                    "required": false
                 }
             ]
         }

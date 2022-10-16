@@ -17,7 +17,7 @@ let command: Import;
 let container: Container;
 
 const importer = {
-    import: jest.fn((message: string) => void 0),
+    import: jest.fn((paths: string[]) => void 0),
 };
 
 const logger = {
@@ -54,17 +54,17 @@ describe('import command', () => {
     });
 
     it('should not run update command without required args', async () => {
-        command.argv = ['project'];
+        command.argv = ['import'];
         await expect(command.run).rejects.toThrowErrorMatchingSnapshot();
     });
 
     it('should not run update command with invalid flags', async () => {
-        command.argv = ['project', '--invalid'];
+        command.argv = ['import', '--invalid'];
         await expect(command.run).rejects.toThrowErrorMatchingSnapshot();
     });
 
     it('should run command to import project', async () => {
-        command.argv = ['path/to/project', '--output', 'path/to/output', '--format', 'json'];
+        command.argv = ['import', '--projects', 'path/to/project', '--output', 'path/to/output', '--format', 'json'];
         await command.run();
 
         expect(fs.outputFile).toHaveBeenCalledWith('path/to/output/model.json', '[]', { encoding: 'utf8' });

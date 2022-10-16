@@ -35,11 +35,11 @@ export class RedTwig {
     private readonly variables: VariableDeclaration[] = [];
     private readonly variableStatements: VariableStatement[] = [];
 
-    public readonly import = (path: string): void => {
-        this.logger.info(`Importing project at ${path}`);
+    public readonly import = (paths: string[]): void => {
+        this.logger.info(`Importing project at `, paths);
         this.repository.toJSON(); // todo: remove this line - just to compile
 
-        const files = this.project.addSourceFilesAtPaths(`${path}/**/*.ts`);
+        const files = this.project.addSourceFilesAtPaths(paths);
         files.forEach((sourceFile: SourceFile) => this.process(sourceFile));
 
         this.report(); // todo: delete this line - just to debug for now

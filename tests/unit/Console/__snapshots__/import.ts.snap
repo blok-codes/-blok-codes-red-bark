@@ -6,8 +6,8 @@ See more help with --help"
 `;
 
 exports[`import command should not run update command without args 1`] = `
-"Missing 1 required arg:
-project  Path to the typescript project
+"Missing required flag:
+ -o, --output OUTPUT  [2mPath to generate the model output file[22m
 See more help with --help"
 `;
 

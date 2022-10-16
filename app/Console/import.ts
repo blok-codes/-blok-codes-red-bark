@@ -36,21 +36,29 @@ export default class Import extends Command {
             description: 'Path to generate the model output file',
             required: true,
         }),
+        projects: Flags.string({
+            char: 'p',
+            description: 'Path to the typescript projects',
+            multiple: true,
+            required: true,
+        }),
     };
 
     public static readonly args: Interfaces.ArgInput = [
         {
-            description: 'Path to the typescript project',
-            name: 'project',
-            required: true,
+            default: 'import',
+            description: 'Import typescript project to generate a model',
+            name: 'action',
+            options: ['import'],
+            required: false,
         },
     ];
 
     public readonly run = async (): Promise<void> => {
         const { args, flags } = await this.parse(Import);
 
-        if (args.project && flags.format === 'json') {
-            this.importer.import(args.project);
+        if (args.action === 'import' && flags.format === 'json') {
+            this.importer.import(args.projects as string[]);
             await this.output(flags.output as string, this.repository.toJSON(), flags.format as Format);
         }
     };

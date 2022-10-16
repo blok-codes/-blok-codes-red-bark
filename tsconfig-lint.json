@@ -4,5 +4,9 @@
         ".eslintrc.js",
         "tests/**/*",
         "app/**/*"
+    ],
+    "exclude": [
+        "tests/fixtures/**/*",
+        "tests/fixtures",
     ]
 }

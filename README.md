@@ -58,22 +58,23 @@ USAGE
 
 # Commands
 <!-- commands -->
-* [`red-twig import [PROJECT]`](#red-twig-import-project)
+* [`red-twig import [OPTIONS]`](#red-twig-import-options)
 * [`red-twig autocomplete [SHELL]`](#red-twig-autocomplete-shell)
 * [`red-twig help [COMMAND]`](#red-twig-help-command)
 
-## `red-twig import [PROJECT]`
-import typescript project to generate a model
+## `red-twig import [OPTIONS]`
+Import typescript projects to generate a model
 
 ```
 USAGE
-  $ node ./bin/run import [PROJECT] -o <output> -f <format>
-  $ red-twig import [PROJECT] -o <output> -f <format>
+  $ node ./bin/run import -p <path/to/project> -o <output> -f <format>
+  $ red-twig import -p <path/to/project> -o <output> -f <format>
 
 ARGUMENTS
-  PROJECT  path to the typescript project to import
+  import  action to execute
 
 FLAGS
+  -p, --projects=<values>  (required) path to the typescript projects
   -o, --output=<value>  (required) path to generate the model the output file
   -f, --format=<value>  (option) format of the output file (json)
 
@@ -81,8 +82,11 @@ DESCRIPTION
   Import typescript project to generate a model
 
 EXAMPLES
-  $ node ./bin/run import path/to/typescript/project -o path/to/output/ -f json
-  $ red-twig import path/to/typescript/project -o path/to/output/ -f json
+  $ node ./bin/run import -p path/to/typescript/project -o path/to/output/ -f json
+  $ red-twig import -p path/to/typescript/project -o path/to/output/ -f json
+  
+  $ node ./bin/run import -p path/to/typescript/project path/to/other/typescript/project -o path/to/output/ -f json
+  $ red-twig import -p path/to/typescript/project path/to/other/typescript/project -o path/to/output/ -f json
 ```
 
 _See code: [import command](app/Console/import.ts)_
